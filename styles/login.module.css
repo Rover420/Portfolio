@@ -219,6 +219,7 @@
     color: white;
     font-size: 16px;
     font-weight: 600;
+    margin-top: 1rem;
 }
 
 .container a.switch {
@@ -229,18 +230,39 @@
     background: white;
     transition: background-color .25s ease-out;
     flex: 1;
+    height: var(--height);
+    user-select: none;
 }
 
 .providers {
     margin-top: 1rem;
+    margin-bottom: .75rem;
+    display: flex;
+    gap: 10px;
 }
 
 .providers .provider {
     padding: 0px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.providers .provider img {
+    width: auto;
 }
 
 .github {
-    background: black;
+    background: hsl(0, 0%, 0%);
+}
+
+.discord {
+    background: hsl(235, 86%, 65%);
+}
+
+.facebook {
+    background: hsl(221, 41%, 43%);
 }
 
 @media screen and (max-width: 600px) {

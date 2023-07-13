@@ -28,7 +28,7 @@ const SignIn = ({ t, providers }) => {
         e.preventDefault();
     }
 
-    console.log(providers.github)
+    console.log(providers)
 
   return (
     <section className={styles.wrapper}>
@@ -54,7 +54,7 @@ const SignIn = ({ t, providers }) => {
                 <div className={styles.providers}>
                     {Object.values(providers).map((provider) => (
                         <button key={provider.name} className={`${styles.provider} ${styles[provider.id]}`} onClick={() => signIn(provider.id)}>
-                            <Image src={`/${provider.name}.png`} height={32} width={32} alt={provider.name} />
+                            <Image src={`/${provider.name}.png`} height={24} width={24} alt={provider.name} />
                         </button>
                     ))}
                 </div>

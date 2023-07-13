@@ -48,6 +48,8 @@ img {
 
 button {
   user-select: none;
+  border: none;
+  background: none;
 }
 
 button:focus-visible, a:focus-visible {
