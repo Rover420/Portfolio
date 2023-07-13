@@ -1,10 +1,22 @@
 import styles from '@/styles/login.module.css'
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { getProviders, signIn, useSession } from "next-auth/react";
 
 import Button from '@/components/external/button';
 
-const Login = ({ t }) => {
+
+
+const customProviders = [
+    {name: 'username'},
+    {},
+    {},
+    {}
+]
+
+
+const SignIn = ({ t, providers }) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -12,21 +24,24 @@ const Login = ({ t }) => {
     const [pass, setPass] = useState('');
     const [remember, setRemember] = useState(false);
 
-    const signin = (e) => {
+    const login = (e) => {
         e.preventDefault();
     }
 
-    console.log(remember)
+    console.log(providers.github)
 
   return (
     <section className={styles.wrapper}>
         <div className={styles.container}>
             <h2>{t?.title ?? 'Sign in'}</h2>
 
-            <form onSubmit={signin}>
+            <form onSubmit={login}>
                 <div className={styles.inputwrapper}>
-                    <input type="text" id='username' name='username' onChange={(e) => {setUsername(e.target.value)}} />
+                    <input type="text" id='username' name='username' value={username} onChange={(e) => {setUsername(e.target.value)}} />
                     <label htmlFor="username" className={username?.length >= 1 ? styles.hide : ''}>{t?.username ?? 'Username'}</label>
+                    <button type='button' className={`${styles.delete} ${username?.length >= 1 ? styles.shown : ''}`} onClick={() => {setUsername('')}} onKeyDown={(e) => {e.key === 'Enter' ? setUsername('') : null}}>
+                        <span />
+                    </button>
                 </div>
                 <div className={styles.inputwrapper} style={{ marginTop: '1rem' }}>
                     <input type={visible ? 'text' : 'password'} id='pass' name='pass' onChange={(e) => {setPass(e.target.value)}} />
@@ -36,18 +51,24 @@ const Login = ({ t }) => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                 </div>
-                <div>Other methods</div>
+                <div className={styles.providers}>
+                    {Object.values(providers).map((provider) => (
+                        <button key={provider.name} className={`${styles.provider} ${styles[provider.id]}`} onClick={() => signIn(provider.id)}>
+                            <Image src={`/${provider.name}.png`} height={32} width={32} alt={provider.name} />
+                        </button>
+                    ))}
+                </div>
                 <label htmlFor='remember' className={styles.customcheckbox}>
                     <input type="checkbox" name="remember" id='remember' checked={remember} onChange={(e) => {setRemember(e.target.checked)}} onKeyDown={(e) => {e.key === 'Enter' ? setRemember(prev => !prev) : null}} />
                     {t?.remember ?? 'Stay signed in'}
                 </label>
-                <button type='submit' onClick={signin}>{t?.title ?? 'Sign in'}</button>
+                <button type='submit' onClick={login}>{t?.title ?? 'Sign in'}</button>
             </form>
 
             <Link href='/recover'>{t?.forgot ?? 'Forgot your password?'}</Link>
             <p>{t?.noacc ?? "Don't have an account?"}</p>
             <Button custom={styles.outsidebtn}>
-                <button type='button'>{t?.register ?? 'Create account'}</button>
+                <Link href='/register' className={styles.switch}>{t?.register ?? 'Create account'}</Link>
             </Button>
 
         </div>
@@ -55,16 +76,18 @@ const Login = ({ t }) => {
   )
 }
 
-export default Login
+export default SignIn
 
 export async function getStaticProps({ locale }) {
 
     const rawt = await require(`@/locale/${locale ?? 'en'}`);
 
     const t = rawt.login
+
+    const providers = await getProviders();
   
     return {
-      props: { t },
+      props: { t, providers: providers ?? [] },
       revalidate: 60,
     };
   }

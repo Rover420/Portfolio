@@ -138,9 +138,58 @@
     user-select: none;
 }
 
+.inputwrapper .delete {
+    position: absolute;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputwrapper .delete span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.inputwrapper .delete.shown span {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.inputwrapper .delete span::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 3px;
+    background-color: hsl(0, 0%, 50%);
+    border-radius: 999px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.inputwrapper .delete span::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 3px;
+    background-color: hsl(0, 0%, 50%);
+    border-radius: 999px;
+    transform: rotate(-45deg);
+    cursor: pointer;
+}
+
 .inputwrapper label {
     left: 16px;
-    transition: opacity .25s ease-out;
+    transition: opacity .15s ease;
     pointer-events: none;
 }
 
@@ -172,12 +221,30 @@
     font-weight: 600;
 }
 
-.container button[type="button"] {
+.container a.switch {
     border: none;
     color: rgb(92, 92, 92);
     font-size: 16px;
     font-weight: 600;
-    background: var(--secondary);
+    background: white;
     transition: background-color .25s ease-out;
     flex: 1;
+}
+
+.providers {
+    margin-top: 1rem;
+}
+
+.providers .provider {
+    padding: 0px 16px;
+}
+
+.github {
+    background: black;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        box-shadow: none;
+    }
 }

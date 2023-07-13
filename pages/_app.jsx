@@ -5,25 +5,28 @@ import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from '@/components/layout/layout';
 import Transition from '@/components/layout/transition';
+import { SessionProvider } from 'next-auth/react';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <ThemeProvider enableSystem={true}>
-      <Head>
-        <title>Portfolio</title>
-        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="theme-color" content="#000000" />
-      </Head>
-      <Layout>
-        <Transition>
-          <Component {...pageProps} />
-        </Transition>
-      </Layout>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-      />
-    </ThemeProvider>
+    <SessionProvider session={session} refetchInterval={5 * 60}>
+      <ThemeProvider enableSystem={true}>
+        <Head>
+          <title>Portfolio</title>
+          <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+          <meta name="theme-color" content="#000000" />
+        </Head>
+        <Layout>
+          <Transition>
+            <Component {...pageProps} />
+          </Transition>
+        </Layout>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+        />
+      </ThemeProvider>
+    </SessionProvider>
   )
 }
