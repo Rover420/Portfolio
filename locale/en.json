@@ -1,0 +1,19 @@
+{
+  "home": {
+    "hello": "Hello World!"
+  },
+  "test": {
+    "increment": "Increment",
+    "decrement": "Decrement"
+  },
+  "login": {
+    "title": "Sign in",
+    "username": "Username",
+    "pass": "Password",
+    "email": "E-Mail Address",
+    "remember": "Stay signed in",
+    "forgot": "Forgot your password?",
+    "noacc": "Don't have an account?",
+    "register": "Create new account"
+  }
+}

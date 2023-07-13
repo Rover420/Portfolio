@@ -1,0 +1,19 @@
+{
+  "home": {
+    "hello": "Witaj!"
+  },
+  "test": {
+    "increment": "Zwiększ",
+    "decrement": "Zmniejsz"
+  },
+  "login": {
+    "title": "Zaloguj się",
+    "username": "Nazwa użytkownika",
+    "pass": "Hasło",
+    "email": "Adres E-Mail",
+    "remember": "Nie wylogowuj mnie",
+    "forgot": "Nie pamiętasz hasła?",
+    "noacc": "Nie posiadasz konta?",
+    "register": "Utwórz nowe konto"
+  }
+}

@@ -1,0 +1,123 @@
+.wrapper {
+    display: flex;
+    height: 100vh;
+    height: 100dvh;
+    height: 100svh;
+    justify-content: center;
+    align-items: center;
+    --custom: 46px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 1rem 1rem;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.inputwrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputwrapper .hide {
+    opacity: 0;
+}
+
+.container input, .container button {
+    border-radius: 8px;
+}
+
+.container button {
+    height: var(--custom);
+    cursor: pointer;
+}
+
+.container a, .container p {
+    text-align: center;
+}
+
+.container p {
+    font-weight: 600;
+    color: hsl(var(--color-light), 30%);
+}
+
+.container a {
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(var(--color-light), 65%);
+    margin: 1rem 0px;
+}
+
+.container input {
+    border: 1px solid hsl(0, 0%, 92%);
+    font-size: 18px;
+    height: var(--custom);
+    padding: 0px 16px;
+    background: hsl(0, 0%, 97%);
+    transition: .25s ease-out;
+    outline: none;
+}
+
+.container input:focus-visible {
+    background: hsl(0, 0%, 100%);
+    border: 1px solid var(--primary);
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inputwrapper label, .inputwrapper svg {
+    position: absolute;
+    cursor: text;
+    user-select: none;
+}
+
+.inputwrapper label {
+    left: 16px;
+    transition: .25s ease-out;
+    pointer-events: none;
+}
+
+.inputwrapper svg {
+    right: 8px;
+    height: 24px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 50%;
+}
+
+.inputwrapper svg:focus-visible {
+    outline: 2px solid black;
+}
+
+.container button[type="submit"] {
+    background: var(--primary);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.container button[type="button"] {
+    background: var(--bg-color);
+    border: none;
+    color: rgb(92, 92, 92);
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
+}
+
+.container input[type="checkbox"] {
+    height: fit-content;
+}
