@@ -1,5 +1,8 @@
 import styles from '@/styles/login.module.css'
 import { useState } from 'react';
+import Link from 'next/link';
+
+import Button from '@/components/external/button';
 
 const Login = ({ t }) => {
 
@@ -7,12 +10,13 @@ const Login = ({ t }) => {
 
     const [username, setUsername] = useState('');
     const [pass, setPass] = useState('');
+    const [remember, setRemember] = useState(false);
 
     const signin = (e) => {
         e.preventDefault();
     }
 
-    console.log(visible)
+    console.log(remember)
 
   return (
     <section className={styles.wrapper}>
@@ -33,16 +37,18 @@ const Login = ({ t }) => {
                     </svg>
                 </div>
                 <div>Other methods</div>
-                <div>
-                    <input id='remember' name='remember' type="checkbox" />
-                    <label htmlFor="remember">{t?.remember ?? 'Stay signed in'}</label>
-                </div>
+                <label htmlFor='remember' className={styles.customcheckbox}>
+                    <input type="checkbox" name="remember" id='remember' checked={remember} onChange={(e) => {setRemember(e.target.checked)}} onKeyDown={(e) => {e.key === 'Enter' ? setRemember(prev => !prev) : null}} />
+                    {t?.remember ?? 'Stay signed in'}
+                </label>
                 <button type='submit' onClick={signin}>{t?.title ?? 'Sign in'}</button>
             </form>
 
-            <a href='/'>{t?.forgot ?? 'Forgot your password?'}</a>
+            <Link href='/recover'>{t?.forgot ?? 'Forgot your password?'}</Link>
             <p>{t?.noacc ?? "Don't have an account?"}</p>
-            <button type='button'>{t?.register ?? 'Create new account'}</button>
+            <Button custom={styles.outsidebtn}>
+                <button type='button'>{t?.register ?? 'Create account'}</button>
+            </Button>
 
         </div>
     </section>

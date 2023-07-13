@@ -13,12 +13,15 @@
     justify-content: center;
     flex-direction: column;
     border-radius: 12px;
-    padding: 1rem 1rem;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 35px;
+    width: 400px;
+    min-width: 0px;
 }
 
 .container h2 {
     text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 .inputwrapper {
@@ -31,13 +34,15 @@
     opacity: 0;
 }
 
-.container input, .container button {
+.outsidebtn {
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
 }
 
 .container button {
     height: var(--custom);
     cursor: pointer;
+    border-radius: 8px;
 }
 
 .container a, .container p {
@@ -46,29 +51,79 @@
 
 .container p {
     font-weight: 600;
-    color: hsl(var(--color-light), 30%);
+    color: hsl(var(--color-alpha), 70%);
+    transition: color .25s ease-out;
 }
 
 .container a {
     font-size: 14px;
     font-weight: 600;
-    color: hsl(var(--color-light), 65%);
+    color: hsl(var(--color-alpha), 35%);
     margin: 1rem 0px;
+    transition: color .25s ease-out;
 }
 
-.container input {
+.container input[type="text"], .container input[type='password'] {
     border: 1px solid hsl(0, 0%, 92%);
+    border-radius: 8px;
     font-size: 18px;
     height: var(--custom);
+    background: hsla(var(--color-alpha), .02);
     padding: 0px 16px;
-    background: hsl(0, 0%, 97%);
     transition: .25s ease-out;
     outline: none;
+    flex: 1;
 }
 
 .container input:focus-visible {
-    background: hsl(0, 0%, 100%);
     border: 1px solid var(--primary);
+    background: hsla(var(--color-alpha), 0);
+}
+
+.customcheckbox {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.customcheckbox input[type="checkbox"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-appearance: none;
+    appearance: none;
+    background: hsla(var(--color-alpha), .07);
+    border-radius: 20%;
+    height: 1rem;
+    width: 1rem;
+    margin: 0 .5rem 0 0;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color .1s ease-out;
+}
+
+.customcheckbox input[type="checkbox"]::before {
+    content: "";
+    width: .65rem;
+    height: .65rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em white;
+    background-color: white;
+}
+
+.customcheckbox:hover input[type="checkbox"] {
+    background: hsla(var(--color-alpha), .12);
+}
+
+.customcheckbox input[type="checkbox"]:checked {
+    background: var(--primary);
+}
+  
+.customcheckbox input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }
 
 .container form {
@@ -85,7 +140,7 @@
 
 .inputwrapper label {
     left: 16px;
-    transition: .25s ease-out;
+    transition: opacity .25s ease-out;
     pointer-events: none;
 }
 
@@ -95,6 +150,14 @@
     cursor: pointer;
     outline: none;
     border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+}
+
+.inputwrapper:focus-within svg {
+    opacity: 1;
+    pointer-events: all;
 }
 
 .inputwrapper svg:focus-visible {
@@ -110,14 +173,11 @@
 }
 
 .container button[type="button"] {
-    background: var(--bg-color);
     border: none;
     color: rgb(92, 92, 92);
     font-size: 16px;
     font-weight: 600;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
-}
-
-.container input[type="checkbox"] {
-    height: fit-content;
+    background: var(--secondary);
+    transition: background-color .25s ease-out;
+    flex: 1;
 }
