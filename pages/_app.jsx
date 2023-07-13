@@ -3,8 +3,8 @@ import { ThemeProvider } from 'next-themes'
 import { ToastContainer } from 'react-toastify';
 import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
-import Layout from '@/components/Layout/Layout';
-import Transition from '@/components/Layout/Transition';
+import Layout from '@/components/layout/layout';
+import Transition from '@/components/layout/transition';
 
 export default function App({ Component, pageProps }) {
   return (
