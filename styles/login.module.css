@@ -258,6 +258,7 @@
 
 .github {
     background: hsl(0, 0%, 0%);
+    box-shadow: inset 0px 0px 2px 2px hsla(0, 0%, 100%, 0.25);
 }
 
 .discord {
@@ -269,7 +270,8 @@
 }
 
 .google {
-    box-shadow: inset 0px 0px 1px 1px black;
+    background: white;
+    box-shadow: inset 0px 0px 2px 2px hsla(0, 0%, 0%, .05);
 }
 
 @media screen and (max-width: 600px) {
