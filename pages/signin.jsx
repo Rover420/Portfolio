@@ -1,5 +1,5 @@
 import styles from '@/styles/login.module.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProviders, signIn } from "next-auth/react";
@@ -8,7 +8,9 @@ import Button from '@/components/external/button';
 
 
 
-const SignIn = ({ t, providers }) => {
+const SignIn = ({ t, initialProviders }) => {
+
+    const [providers, setProviders] = useState(initialProviders);
 
     const [visible, setVisible] = useState(false);
 
@@ -20,7 +22,17 @@ const SignIn = ({ t, providers }) => {
         e.preventDefault();
     }
 
-    console.log(providers)
+    useEffect(() => {
+        if(!providers || providers.length < 1) {
+            const loadProviders = async () => {
+                const res = await getProviders();
+                const providersList = Object.keys(res).map((k) => res[k]);
+                console.log(providersList)
+                setProviders(providersList);
+            };
+            loadProviders();
+        }
+    }, []);
 
   return (
     <section className={styles.wrapper}>
@@ -78,10 +90,10 @@ export async function getStaticProps({ locale }) {
 
     const t = rawt.login
 
-    const providers = await getProviders();
+    const initialProviders = await getProviders();
   
     return {
-      props: { t, providers: providers ?? [] },
+      props: { t, initialProviders: initialProviders ?? [] },
       revalidate: 60,
     };
 }
