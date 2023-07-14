@@ -46,7 +46,7 @@ const SignIn = ({ t, providers }) => {
                 <div className={styles.providers}>
                     {Object.values(providers).map((provider) => (
                         <button key={provider.name} className={`${styles.provider} ${styles[provider.id]}`} onClick={() => signIn(provider.id)}>
-                            <Image src={`/${provider.name}.png`} height={24} width={24} alt={provider.name} />
+                            <Image src={`/${provider.id}.png`} height={24} width={24} alt={provider.name} />
                         </button>
                     ))}
                 </div>
@@ -57,7 +57,7 @@ const SignIn = ({ t, providers }) => {
                 <button type='submit' onClick={login}>{t?.title ?? 'Sign in'}</button>
             </form>
 
-            <Link href='/recover'>{t?.forgot ?? 'Forgot your password?'}</Link>
+            <Link href='/recover' className={styles.forgot}>{t?.forgot ?? 'Forgot your password?'}</Link>
             <p>{t?.noacc ?? "Don't have an account?"}</p>
             <Button custom={styles.outsidebtn}>
                 <Link href='/register' className={styles.switch}>{t?.register ?? 'Create account'}</Link>

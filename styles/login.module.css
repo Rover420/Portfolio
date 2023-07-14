@@ -55,7 +55,7 @@
     transition: color .25s ease-out;
 }
 
-.container a {
+.container .forgot {
     font-size: 14px;
     font-weight: 600;
     color: hsl(var(--color-alpha), 35%);
@@ -230,7 +230,10 @@
     background: white;
     transition: background-color .25s ease-out;
     flex: 1;
-    height: var(--height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--custom);
     user-select: none;
 }
 
@@ -263,6 +266,10 @@
 
 .facebook {
     background: hsl(221, 41%, 43%);
+}
+
+.google {
+    box-shadow: inset 0px 0px 1px 1px black;
 }
 
 @media screen and (max-width: 600px) {
