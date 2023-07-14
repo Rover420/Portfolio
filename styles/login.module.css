@@ -85,6 +85,7 @@
     align-items: center;
     user-select: none;
     cursor: pointer;
+    margin: 0.5rem 0px 0.75rem 0px;
 }
 
 .customcheckbox input[type="checkbox"] {
@@ -132,10 +133,13 @@
     justify-content: center;
 }
 
-.inputwrapper label, .inputwrapper svg {
+.inputwrapper label {
     position: absolute;
     cursor: text;
     user-select: none;
+    left: 16px;
+    transition: opacity .15s ease;
+    pointer-events: none;
 }
 
 .inputwrapper .delete {
@@ -147,6 +151,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: all;
+    user-select: auto;
 }
 
 .inputwrapper .delete span {
@@ -155,14 +161,17 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 1;
     transition: opacity .2s ease;
 }
 
-.inputwrapper .delete.shown span {
-    opacity: 1;
-    pointer-events: all;
+.inputwrapper .delete:disabled {
+    pointer-events: none;
+    user-select: none;
+}
+
+.inputwrapper .delete:disabled span {
+    opacity: 0;
 }
 
 .inputwrapper .delete span::before {
@@ -187,30 +196,27 @@
     cursor: pointer;
 }
 
-.inputwrapper label {
-    left: 16px;
-    transition: opacity .15s ease;
-    pointer-events: none;
-}
-
-.inputwrapper svg {
+.inputwrapper .showpass {
+    position: absolute;
     right: 8px;
-    height: 24px;
-    cursor: pointer;
-    outline: none;
     border-radius: 50%;
     pointer-events: none;
+    height: fit-content;
+    padding: 0;
     opacity: 0;
     transition: opacity .2s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.inputwrapper:focus-within svg {
+.inputwrapper .showpass svg {
+    height: 24px;
+}
+
+.inputwrapper:focus-within .showpass {
     opacity: 1;
     pointer-events: all;
-}
-
-.inputwrapper svg:focus-visible {
-    outline: 2px solid black;
 }
 
 .container button[type="submit"] {
