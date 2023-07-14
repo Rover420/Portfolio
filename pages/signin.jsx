@@ -2,18 +2,10 @@ import styles from '@/styles/login.module.css'
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getProviders, signIn, useSession } from "next-auth/react";
+import { getProviders, signIn } from "next-auth/react";
 
 import Button from '@/components/external/button';
 
-
-
-const customProviders = [
-    {name: 'username'},
-    {},
-    {},
-    {}
-]
 
 
 const SignIn = ({ t, providers }) => {
@@ -90,5 +82,5 @@ export async function getStaticProps({ locale }) {
       props: { t, providers: providers ?? [] },
       revalidate: 60,
     };
-  }
+}
   
