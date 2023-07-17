@@ -15,13 +15,70 @@
     border-radius: 12px;
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 35px;
-    width: 400px;
+    width: 420px;
     min-width: 0px;
 }
 
 .container h2 {
     text-align: center;
     margin-bottom: 2.5rem;
+}
+
+.selection {
+    margin-bottom: 1.5rem;
+}
+
+.selection button {
+    color: hsl(219, 13%, 64%);
+    transition: color .25s ease-out;
+    position: relative;
+    height: fit-content;
+    padding: 4px 0px;
+    margin: 0px 12px;
+    font-size: 14px;
+}
+
+.selection button:first-of-type {
+    margin-left: 0;
+}
+
+.selection button:last-of-type {
+    margin-right: 0;
+}
+
+.selection button:hover {
+    color: var(--primary);
+}
+
+.selection button.active {
+    color: var(--color);
+}
+
+.selection button.active::after {
+    content: "";
+    background: var(--primary);
+    border-radius: 3px;
+    bottom: -4px;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 18px;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container form > div {
+    margin-top: 1rem;
+}
+
+.container form > div:first-of-type {
+    margin-top: 0;
 }
 
 .inputwrapper {
@@ -34,105 +91,6 @@
     opacity: 0;
 }
 
-.outsidebtn {
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
-}
-
-.container button {
-    height: var(--custom);
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.container a, .container p {
-    text-align: center;
-}
-
-.container p {
-    font-weight: 600;
-    color: hsl(var(--color-alpha), 70%);
-    transition: color .25s ease-out;
-}
-
-.container .forgot {
-    font-size: 14px;
-    font-weight: 600;
-    color: hsl(var(--color-alpha), 35%);
-    margin: 1rem 0px;
-    transition: color .25s ease-out;
-}
-
-.container input[type="text"], .container input[type='password'] {
-    border: 1px solid hsl(0, 0%, 92%);
-    border-radius: 8px;
-    font-size: 18px;
-    height: var(--custom);
-    background: hsla(var(--color-alpha), .02);
-    padding: 0px 16px;
-    transition: .25s ease-out;
-    outline: none;
-    flex: 1;
-}
-
-.container input:focus-visible {
-    border: 1px solid var(--primary);
-    background: hsla(var(--color-alpha), 0);
-}
-
-.customcheckbox {
-    display: flex;
-    align-items: center;
-    user-select: none;
-    cursor: pointer;
-    margin: 0.5rem 0px 0.75rem 0px;
-}
-
-.customcheckbox input[type="checkbox"] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    -webkit-appearance: none;
-    appearance: none;
-    background: hsla(var(--color-alpha), .07);
-    border-radius: 20%;
-    height: 1rem;
-    width: 1rem;
-    margin: 0 .5rem 0 0;
-    padding: 0;
-    cursor: pointer;
-    transition: background-color .1s ease-out;
-}
-
-.customcheckbox input[type="checkbox"]::before {
-    content: "";
-    width: .65rem;
-    height: .65rem;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em white;
-    background-color: white;
-}
-
-.customcheckbox:hover input[type="checkbox"] {
-    background: hsla(var(--color-alpha), .12);
-}
-
-.customcheckbox input[type="checkbox"]:checked {
-    background: var(--primary);
-}
-  
-.customcheckbox input[type="checkbox"]:checked::before {
-    transform: scale(1);
-}
-
-.container form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .inputwrapper label {
     position: absolute;
     cursor: text;
@@ -140,6 +98,7 @@
     left: 16px;
     transition: opacity .15s ease;
     pointer-events: none;
+    color: hsla(var(--color-alpha), .8);
 }
 
 .inputwrapper .delete {
@@ -219,13 +178,104 @@
     pointer-events: all;
 }
 
+.outsidebtn {
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
+}
+
+.outsidebtn button {
+    flex: 1;
+}
+
+.container a, .container p {
+    text-align: center;
+}
+
+.container p {
+    font-weight: 600;
+    color: hsl(var(--color-alpha), 70%);
+    transition: color .25s ease-out;
+}
+
+.container .forgot {
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(var(--color-alpha), 35%);
+    margin: 1rem 0px;
+    transition: color .25s ease-out;
+}
+
+.container input[type="text"], .container input[type='password'] {
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 18px;
+    height: var(--custom);
+    background: hsla(var(--color-alpha), .02);
+    padding: 0px 16px;
+    transition: .25s ease-out;
+    outline: none;
+    flex: 1;
+}
+
+.container input:focus-visible {
+    border: 1px solid var(--primary);
+    background: hsla(var(--color-alpha), 0);
+}
+
+.customcheckbox {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    margin: 0.5rem 0px 0.75rem 0px;
+}
+
+.customcheckbox input[type="checkbox"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-appearance: none;
+    appearance: none;
+    background: hsla(var(--color-alpha), .07);
+    border-radius: 20%;
+    height: 1rem;
+    width: 1rem;
+    margin: 0 .5rem 0 0;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color .1s ease-out;
+}
+
+.customcheckbox input[type="checkbox"]::before {
+    content: "";
+    width: .65rem;
+    height: .65rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em white;
+    background-color: white;
+}
+
+.customcheckbox:hover input[type="checkbox"] {
+    background: hsla(var(--color-alpha), .12);
+}
+
+.customcheckbox input[type="checkbox"]:checked {
+    background: var(--primary);
+}
+  
+.customcheckbox input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
 .container button[type="submit"] {
     background: var(--primary);
     border: none;
+    height: var(--custom);
     color: white;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 1rem;
 }
 
 .container a.switch {
@@ -243,15 +293,28 @@
     user-select: none;
 }
 
+.container .gotacc {
+    margin-top: 2.5rem;
+}
+
+.container .signwith {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 2rem;
+}
+
 .providers {
-    margin-top: 1rem;
+    margin-top: 8px;
     margin-bottom: .75rem;
     display: flex;
     gap: 10px;
 }
 
 .providers .provider {
-    padding: 0px 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,7 +327,7 @@
 
 .github {
     background: hsl(0, 0%, 0%);
-    box-shadow: inset 0px 0px 2px 2px hsla(0, 0%, 100%, 0.25);
+    box-shadow: inset 0px 0px 1px 1px hsla(0, 0%, 100%, 0.15);
 }
 
 .discord {
@@ -277,7 +340,36 @@
 
 .google {
     background: white;
-    box-shadow: inset 0px 0px 2px 2px hsla(0, 0%, 0%, .05);
+    box-shadow: inset 0px 0px 1px 1px hsla(0, 0%, 0%, .15);
+}
+
+.metamask {
+    background: white;
+    box-shadow: inset 0px 0px 1px 1px hsla(0, 0%, 0%, .15);
+}
+
+.error input {
+    border: 1px solid hsl(350, 100%, 61%) !important;
+}
+
+.errmsg {
+    color: hsl(350, 100%, 61%) !important;
+    display: flex;
+    font-size: 13px;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    margin-left: 8px;
+    margin-bottom: -4px;
+    display: none;
+}
+
+.errmsg svg {
+    width: 16px;
+}
+
+.error .errmsg {
+    display: flex;
 }
 
 @media screen and (max-width: 600px), (max-height: 600px) {

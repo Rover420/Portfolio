@@ -7,13 +7,28 @@
     "decrement": "Zmniejsz"
   },
   "login": {
-    "title": "Zaloguj się",
+    "title": "Logowanie",
     "username": "Nazwa użytkownika",
     "pass": "Hasło",
     "email": "Adres E-Mail",
     "remember": "Nie wylogowuj mnie",
     "forgot": "Nie pamiętasz hasła?",
+    "submit": "Zaloguj się",
     "noacc": "Nie posiadasz konta?",
     "register": "Utwórz konto"
+  },
+  "register": {
+    "title": "Rejestracja",
+    "username": "Nazwa użytkownika",
+    "usererr": "4 do 50 znaków.",
+    "pass": "Hasło",
+    "passerr": "8 do 50 znaków.",
+    "repeat": "Powtórz hasło",
+    "repeaterr": "Hasła muszą się zgadzać.",
+    "email": "Adres E-Mail",
+    "submit": "Zarejestruj się",
+    "providers": "Możesz również stworzyć konto za pomocą",
+    "gotacc": "Posiadasz już konto?",
+    "signin": "Zaloguj się"
   }
 }

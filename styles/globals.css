@@ -6,6 +6,8 @@
   --container: hsl(0, 0%, 100%);
   --bg-color-alpha: 0, 0%, 100%;
   --color-alpha: 0, 0%, 0%;
+  --secondary: hsl(0, 0%, 100%);
+  --input-border: hsl(0, 0%, 92%);
   --primary: hsl(204, 88%, 53%);
 }
 
@@ -18,7 +20,7 @@ body {
 html {
   background: var(--bg-color);
   color: var(--color);
-  font-family: 'Montserrat', Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, 
+  font-family: Inter, 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, 
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   overflow: overlay;
   overflow-x: hidden;
@@ -47,6 +49,8 @@ img {
 }
 
 button {
+  font-family: inherit;
+  cursor: pointer;
   user-select: none;
   border: none;
   background: none;
@@ -63,6 +67,8 @@ button:focus-visible, a:focus-visible {
     --container: hsl(0, 0%, 100%);
     --bg-color-alpha: 0, 0%, 100%;
     --color-alpha: 0, 0%, 0%;
+    --secondary: hsl(0, 0%, 100%);
+    --input-border: hsl(0, 0%, 92%);
   }
   html {
     color-scheme: light;
@@ -76,6 +82,8 @@ button:focus-visible, a:focus-visible {
     --container: hsl(0, 0%, 15%);
     --bg-color-alpha: 0, 0%, 0%;
     --color-alpha: 0, 0%, 100%;
+    --secondary: hsl(0, 0%, 15%);
+    --input-border: hsl(0, 0%, 15%);
   }
   html {
     color-scheme: dark;
@@ -90,6 +98,7 @@ button:focus-visible, a:focus-visible {
   --bg-color-alpha: 0, 0%, 100%;
   --color-alpha: 0, 0%, 0%;
   --secondary: hsl(0, 0%, 100%);
+  --input-border: hsl(0, 0%, 92%);
 }
 
 [data-theme='dark'] {
@@ -100,6 +109,7 @@ button:focus-visible, a:focus-visible {
   --bg-color-alpha: 0, 0%, 0%;
   --color-alpha: 0, 0%, 100%;
   --secondary: hsl(0, 0%, 15%);
+  --input-border: hsl(0, 0%, 15%);
 }
 
 .ripplebtn {

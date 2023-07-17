@@ -2,7 +2,7 @@ import styles from '@/styles/login.module.css'
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, signIn, signOut } from "next-auth/react";
 
 import Button from '@/components/external/button';
 
@@ -12,13 +12,15 @@ const SignIn = ({ t, initialProviders }) => {
 
     const [providers, setProviders] = useState(initialProviders);
 
+    const [selected, setSelected] = useState('');
+
     const [visible, setVisible] = useState(false);
 
     const [username, setUsername] = useState('');
     const [pass, setPass] = useState('');
     const [remember, setRemember] = useState(false);
 
-    const login = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
     }
 
@@ -39,7 +41,15 @@ const SignIn = ({ t, initialProviders }) => {
         <div className={styles.container}>
             <h2>{t?.title ?? 'Sign in'}</h2>
 
-            <form onSubmit={login}>
+            <div className={styles.selection}>
+                <button type='button' onClick={() => {setSelected('')}} className={selected === '' ? styles.active : ''}>{t?.username ?? 'Username'}</button>
+                <button type='button' onClick={() => {setSelected('email')}} className={selected === 'email' ? styles.active : ''}>E-Mail</button>
+                <button type='button' onClick={() => {setSelected('otp')}} className={selected === 'otp' ? styles.active : ''}>E-Mail OTP</button>
+                <button type='button' onClick={() => {setSelected('pgp')}} className={selected === 'pgp' ? styles.active : ''}>PGP</button>
+            </div>
+
+            <form onSubmit={handleLogin}>
+                
                 <div className={styles.inputwrapper}>
                     <input type="text" id='username' name='username' value={username} onChange={(e) => {setUsername(e.target.value)}} />
                     <label htmlFor="username" className={username?.length >= 1 ? styles.hide : ''}>{t?.username ?? 'Username'}</label>
@@ -47,7 +57,8 @@ const SignIn = ({ t, initialProviders }) => {
                         <span />
                     </button>
                 </div>
-                <div className={styles.inputwrapper} style={{ marginTop: '1rem' }}>
+                
+                <div className={styles.inputwrapper}>
                     <input type={visible ? 'text' : 'password'} id='pass' name='pass' onChange={(e) => {setPass(e.target.value)}} />
                     <label htmlFor="pass" className={pass?.length >= 1 ? styles.hide : ''}>{t?.pass ?? 'Password'}</label>
                     <button className={styles.showpass} type='button' onClick={() => {setVisible(prev => !prev)}}>
@@ -57,22 +68,31 @@ const SignIn = ({ t, initialProviders }) => {
                         </svg>
                     </button>
                 </div>
+
                 <div className={styles.providers}>
+                    <button className={`${styles.provider} ${styles.metamask}`}>
+                        <Image src={`/metamask.svg`} height={28} width={28} alt='MetaMask' />
+                    </button>
                     {Object.values(providers).map((provider) => (
                         <button key={provider.name} className={`${styles.provider} ${styles[provider.id]}`} onClick={() => signIn(provider.id)}>
-                            <Image src={`/${provider.id}.png`} height={24} width={24} alt={provider.name} />
+                            <Image src={`/${provider.id}.png`} height={28} width={28} alt={provider.name} />
                         </button>
                     ))}
                 </div>
+                
                 <label htmlFor='remember' className={styles.customcheckbox}>
                     <input type="checkbox" name="remember" id='remember' checked={remember} onChange={(e) => {setRemember(e.target.checked)}} onKeyDown={(e) => {e.key === 'Enter' ? setRemember(prev => !prev) : null}} />
                     {t?.remember ?? 'Stay signed in'}
                 </label>
-                <button type='submit' onClick={login}>{t?.title ?? 'Sign in'}</button>
+                
+                <Button custom={styles.outsidebtn} color='dark' style={{ marginTop: '2rem' }}>
+                    <button type='submit' onClick={handleLogin}>{t?.submit ?? 'Sign up'}</button>
+                </Button>
+                
             </form>
 
             <Link href='/recover' className={styles.forgot}>{t?.forgot ?? 'Forgot your password?'}</Link>
-            <p>{t?.noacc ?? "Don't have an account?"}</p>
+            <p className={styles.gotacc}>{t?.noacc ?? "Don't have an account?"}</p>
             <Button color='dark' custom={styles.outsidebtn}>
                 <Link href='/register' className={styles.switch}>{t?.register ?? 'Create account'}</Link>
             </Button>
