@@ -294,7 +294,7 @@
 }
 
 .container .gotacc {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
 }
 
 .container .signwith {
@@ -313,7 +313,7 @@
 }
 
 .providers .provider {
-    padding: 8px 16px;
+    padding: 8px 0px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -375,5 +375,9 @@
 @media screen and (max-width: 600px), (max-height: 600px) {
     .container {
         box-shadow: none;
+        padding: 1rem;
+    }
+    .container h2 {
+        margin-bottom: 2rem;
     }
 }

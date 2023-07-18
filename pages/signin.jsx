@@ -44,7 +44,6 @@ const SignIn = ({ t, initialProviders }) => {
             <div className={styles.selection}>
                 <button type='button' onClick={() => {setSelected('')}} className={selected === '' ? styles.active : ''}>{t?.username ?? 'Username'}</button>
                 <button type='button' onClick={() => {setSelected('email')}} className={selected === 'email' ? styles.active : ''}>E-Mail</button>
-                <button type='button' onClick={() => {setSelected('otp')}} className={selected === 'otp' ? styles.active : ''}>E-Mail OTP</button>
                 <button type='button' onClick={() => {setSelected('pgp')}} className={selected === 'pgp' ? styles.active : ''}>PGP</button>
             </div>
 
@@ -85,7 +84,7 @@ const SignIn = ({ t, initialProviders }) => {
                     {t?.remember ?? 'Stay signed in'}
                 </label>
                 
-                <Button custom={styles.outsidebtn} color='dark' style={{ marginTop: '2rem' }}>
+                <Button custom={styles.outsidebtn} color='dark'>
                     <button type='submit' onClick={handleLogin}>{t?.submit ?? 'Sign up'}</button>
                 </Button>
                 

@@ -121,7 +121,6 @@ const Register = ({ t, initialProviders }) => {
             <div className={styles.selection}>
                 <button type='button' onClick={() => {setSelected('')}} className={selected === '' ? styles.active : ''}>{t?.username ?? 'Username'}</button>
                 <button type='button' onClick={() => {setSelected('email')}} className={selected === 'email' ? styles.active : ''}>E-Mail</button>
-                <button type='button' onClick={() => {setSelected('otp')}} className={selected === 'otp' ? styles.active : ''}>E-Mail OTP</button>
                 <button type='button' onClick={() => {setSelected('pgp')}} className={selected === 'pgp' ? styles.active : ''}>PGP</button>
             </div>
 

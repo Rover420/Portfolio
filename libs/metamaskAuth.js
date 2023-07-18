@@ -13,17 +13,20 @@ const metamaskAuth = async () => {
     );
     const { message } = response.data;
 
-    console.log(message)
-
     const msg = `0x${Buffer.from(message, 'utf8').toString('hex')}`;
     
     const signature = await ethereum.request({
       method: 'personal_sign',
       params: [msg, accounts[0]],
     });
-    
 
-    console.log(signature)
+    const data = await api.post('/verifyMetamask', { address: accounts[0], signature },
+      {
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+
+    console.log(data)
 
   } catch (error) {
     console.error('Error requesting authentication message:', error);
