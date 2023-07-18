@@ -110,8 +110,6 @@ const Register = ({ t, initialProviders }) => {
         }
     }, []);
 
-    console.log(validMatch)
-
   return (
     <section className={styles.wrapper}>
         <div className={styles.container}>
