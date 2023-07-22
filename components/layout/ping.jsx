@@ -14,18 +14,28 @@ const PingComponent = () => {
     }, []);
     
     useEffect(() => {
-        if (!socket) return;
+      if (!socket) return;
     
-        const handlePong = (value) => {
-          const endTime = new Date().getTime();
-          setPing(endTime - value.startTime);
-        };
-
-        socket.on('pong', handlePong);
+      const handleConnect = () => {
+        const first = Date.now();
+        socket.emit('ping', () => {
+          setPing(Date.now() - first);
+        });
+      };
     
-        return () => {
-          socket.off('pong', handlePong);
-        };
+      socket.on("connect", handleConnect);
+    
+      const interval = setInterval(() => {
+        const start = Date.now();
+        socket.emit('ping', () => {
+          setPing(Date.now() - start);
+        });
+      }, 5000);
+    
+      return () => {
+        socket.off("connect", handleConnect);
+        clearInterval(interval);
+      };
     }, [socket]);
     
     return (

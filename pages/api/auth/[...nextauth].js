@@ -28,12 +28,6 @@ export const authOptions = {
     pages: {
         signIn: '/auth/signin',
     },
-    callbacks: {
-        async signIn({ user, account, profile, email, credentials }) {
-            console.log({ ...credentials })
-            return true
-        }
-    }
 }
 
 export default NextAuth(authOptions)
