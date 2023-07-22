@@ -20,7 +20,7 @@ export const useStore = create((set, get) => ({
     connect: () => {
         const { socket } = get();
         if(!socket) {
-            const socket = io("ws://localhost:3001", { reconnectionAttempts: 3, reconnectionDelayMax: 10000 });
+            const socket = io("ws://portfolio-rover420-bda16df3f7d1.herokuapp.com", { reconnectionAttempts: 3, reconnectionDelayMax: 10000 });
             set({ socket });
         }
     },
