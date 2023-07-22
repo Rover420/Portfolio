@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
+import Clicks from '@/components/main/home/clicks';
 
 export default function Home({ t }) {
 
@@ -12,9 +13,9 @@ export default function Home({ t }) {
         <meta name="robots" content="all" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h2>{t?.home?.hello}</h2>
-      </main>
+      <div style={{ display: 'flex', height: '100svh', justifyContent: 'center', alignItems: 'center' }}>
+        <Clicks />
+      </div>
     </>
   )
 }

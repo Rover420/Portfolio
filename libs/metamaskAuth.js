@@ -1,4 +1,4 @@
-import api from "@/hooks/axios"
+import axios from "@/hooks/axios";
 
 const metamaskAuth = async () => {
 
@@ -6,9 +6,10 @@ const metamaskAuth = async () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
 
-    const response = await api.post('/metamask', { address: accounts[0], chainId: parseInt(chainId, 16) },
+    const response = await axios.post('/auth/metamask', { address: accounts[0], chainId: parseInt(chainId, 16) },
       {
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
       }
     );
     const { message } = response.data;
@@ -20,13 +21,16 @@ const metamaskAuth = async () => {
       params: [msg, accounts[0]],
     });
 
-    const data = await api.post('/verifyMetamask', { address: accounts[0], signature },
+    const data = await axios.post('/auth/verifyMetamask', { address: accounts[0], signature },
       {
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true
       }
     );
 
-    console.log(data)
+    console.log(data);
 
   } catch (error) {
     console.error('Error requesting authentication message:', error);

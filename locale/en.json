@@ -20,7 +20,7 @@
   "register": {
     "title": "Registration",
     "username": "Username",
-    "usererr": "4 to 50 characters.",
+    "usererr": "4 to 30 characters.",
     "pass": "Password",
     "passerr": "8 to 50 characters.",
     "repeat": "Confirm password",

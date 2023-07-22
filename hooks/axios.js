@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({
+export default axios.create({
     baseURL: process.env.NEXT_PUBLIC_NODE_URL,
 });
-  
-export default api;
+
+export const axiosPrivate = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_NODE_URL,
+    headers: { 'Content-Type': 'application/json' },
+    withCredentials: true
+});

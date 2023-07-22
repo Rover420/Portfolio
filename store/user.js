@@ -1,5 +1,5 @@
 import { create } from "zustand";
-
+import { io } from "socket.io-client";
 
 
 const initialUser = { "isSigned": false, "nickname": '' }
@@ -15,5 +15,21 @@ export const useStore = create((set, get) => ({
 
     privateKey: '',
     setPrivateKey: (state) => set(() => ({ privateKey: state })),
+
+    socket: null,
+    connect: () => {
+        const { socket } = get();
+        if(!socket) {
+            const socket = io("ws://localhost:3001", { reconnectionAttempts: 3, reconnectionDelayMax: 10000 });
+            set({ socket });
+        }
+    },
+    disconnect: () => {
+        const { socket } = get();
+        if (socket) {
+          socket.disconnect();
+          set({ socket: null });
+        }
+    },
 
 }))

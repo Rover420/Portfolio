@@ -22,7 +22,7 @@
     "username": "Nazwa użytkownika",
     "usererr": "4 do 50 znaków.",
     "pass": "Hasło",
-    "passerr": "8 do 50 znaków.",
+    "passerr": "8 do 30 znaków.",
     "repeat": "Powtórz hasło",
     "repeaterr": "Hasła muszą się zgadzać.",
     "email": "Adres E-Mail",

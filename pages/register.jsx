@@ -1,17 +1,16 @@
 import styles from '@/styles/login.module.css'
 import { useState, useEffect, useRef } from 'react'
-import { getProviders } from 'next-auth/react';
+import { getProviders, signIn } from 'next-auth/react';
 import Link from 'next/link';
-import api from '../hooks/axios';
+import axios from '../hooks/axios';
 import Image from 'next/image';
 
 import { encryptData } from '@/hooks/serverEncrypt';
 import Button from '@/components/external/button';
-import metamaskAuth from '@/libs/metamaskAuth';
 
 
-const USER_REGEX = /^.{3,51}$/;
-const PWD_REGEX = /^.{7,51}$/;
+const USER_REGEX = /^.{4,50}$/;
+const PWD_REGEX = /^.{8,50}$/;
 
 const Register = ({ t, initialProviders }) => {
 
@@ -52,7 +51,7 @@ const Register = ({ t, initialProviders }) => {
         }
         try {
             const data = await encryptData(JSON.stringify({ username: user, pass: pwd }));
-            const response = await api.post('/register',
+            const response = await axios.post('/register',
                 JSON.stringify({ data }),
                 {
                     headers: { 'Content-Type': 'application/json' },
@@ -77,6 +76,11 @@ const Register = ({ t, initialProviders }) => {
         }
     }
 
+    const handleMetamask = async () => {
+        const metamaskAuthModule = await (import('@/libs/metamaskAuth'));
+        const metamaskAuth = metamaskAuthModule.default; // Access the default export
+        metamaskAuth();
+    }
 
 
 
@@ -139,7 +143,7 @@ const Register = ({ t, initialProviders }) => {
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)} />
                         <label htmlFor="username" className={user?.length >= 1 ? styles.hide : ''}>{t?.username ?? 'Username'}</label>
-                        <button type='button' disabled={user?.length < 1} className={styles.delete} onClick={() => {setUser('')}} onKeyDown={(e) => {e.key === 'Enter' ? setUser('') : null}}>
+                        <button type='button' disabled={user?.length < 1} className={styles.delete} onClick={() => {setUser('')}} onKeyDown={(e) => {e.key === 'Enter' ? setUser('') : null}} aria-label="Clear username">
                             <span />
                         </button>
                     </div>
@@ -165,7 +169,7 @@ const Register = ({ t, initialProviders }) => {
                             onFocus={() => setPwdFocus(true)}
                             onBlur={() => setPwdFocus(false)} />
                         <label htmlFor="pass" className={pwd?.length >= 1 ? styles.hide : ''}>{t?.pass ?? 'Password'}</label>
-                        <button className={styles.showpass} type='button' onClick={() => {setVisible1(prev => !prev)}}>
+                        <button className={styles.showpass} type='button' onClick={() => {setVisible1(prev => !prev)}} aria-label={visible1 ? 'Hide password' : 'Show password'}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -177,7 +181,7 @@ const Register = ({ t, initialProviders }) => {
                         <svg fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                         </svg>
-                        {t?.passerr ?? '6 to 50 characters.'}
+                        {t?.passerr ?? '6 to 30 characters.'}
                     </span>
                 </div>
 
@@ -193,7 +197,7 @@ const Register = ({ t, initialProviders }) => {
                             onFocus={() => setMatchFocus(true)}
                             onBlur={() => setMatchFocus(false)} />
                         <label htmlFor="repeat" className={matchPwd?.length >= 1 ? styles.hide : ''}>{t?.repeat ?? 'Confirm password'}</label>
-                        <button className={styles.showpass} type='button' onClick={() => {setVisible2(prev => !prev)}}>
+                        <button className={styles.showpass} type='button' onClick={() => {setVisible2(prev => !prev)}} aria-label={visible2 ? 'Hide match password' : 'Show match password'}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -218,7 +222,7 @@ const Register = ({ t, initialProviders }) => {
             <p className={styles.signwith}>{t?.providers ?? 'You can also create an account with'}</p>
 
             <div className={styles.providers}>
-                <button type='button' onClick={metamaskAuth} className={`${styles.provider} ${styles.metamask}`}>
+                <button type='button' onClick={handleMetamask} className={`${styles.provider} ${styles.metamask}`}>
                     <Image src={`/metamask.svg`} height={28} width={28} alt='MetaMask' />
                 </button>
                 {Object.values(providers).map((provider) => (
