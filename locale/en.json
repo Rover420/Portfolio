@@ -1,10 +1,6 @@
 {
   "home": {
-    "hello": "Hello World!"
-  },
-  "test": {
-    "increment": "Increment",
-    "decrement": "Decrement"
+    "clicks": "Current clicks:"
   },
   "login": {
     "title": "Sign in",

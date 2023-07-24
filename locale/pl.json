@@ -1,10 +1,6 @@
 {
   "home": {
-    "hello": "Witaj!"
-  },
-  "test": {
-    "increment": "Zwiększ",
-    "decrement": "Zmniejsz"
+    "clicks": "Aktualne kliknięcia: "
   },
   "login": {
     "title": "Logowanie",
