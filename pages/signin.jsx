@@ -26,15 +26,12 @@ const SignIn = ({ t, initialProviders }) => {
     }
 
     useEffect(() => {
-        if(!providers || providers.length < 1) {
-            const loadProviders = async () => {
-                const res = await getProviders();
-                const providersList = Object.keys(res).map((k) => res[k]);
-                console.log(providersList)
-                setProviders(providersList);
-            };
-            loadProviders();
-        }
+        const loadProviders = async () => {
+            const res = await getProviders();
+            const providersList = Object.keys(res).map((k) => res[k]);
+            setProviders(providersList);
+        };
+        loadProviders();
     }, []);
 
   return (
@@ -110,10 +107,15 @@ export async function getStaticProps({ locale }) {
 
     const t = rawt.login
 
-    const initialProviders = await getProviders();
+    const initialProviders = [
+        {id: 'github', name: 'GitHub', type: 'oauth', signinUrl: 'http://localhost:3000/api/auth/signin/github', callbackUrl: 'http://localhost:3000/api/auth/callback/github'},
+        {id: 'facebook', name: 'Facebook', type: 'oauth', signinUrl: 'http://localhost:3000/api/auth/signin/facebook', callbackUrl: 'http://localhost:3000/api/auth/callback/facebook'},
+        {id: 'google', name: 'Google', type: 'oauth', signinUrl: 'http://localhost:3000/api/auth/signin/google', callbackUrl: 'http://localhost:3000/api/auth/callback/google'},
+        {id: 'discord', name: 'Discord', type: 'oauth', signinUrl: 'http://localhost:3000/api/auth/signin/discord', callbackUrl: 'http://localhost:3000/api/auth/callback/discord'}
+    ]
   
     return {
-      props: { t, initialProviders: initialProviders ?? [] },
+      props: { t, initialProviders },
       revalidate: 60,
     };
 }
