@@ -1,10 +1,8 @@
 .wrapper {
     display: flex;
-    height: 100vh;
-    height: 100dvh;
-    height: 100svh;
     justify-content: center;
     align-items: center;
+    flex: 1;
     --custom: 46px;
 }
 
@@ -17,6 +15,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 35px;
     width: 420px;
     min-width: 0px;
+    margin-top: -10vh;
 }
 
 .container h2 {
@@ -375,7 +374,7 @@
 @media screen and (max-width: 600px), (max-height: 600px) {
     .container {
         box-shadow: none;
-        padding: 1rem;
+        padding: 0 2rem;
     }
     .container h2 {
         margin-bottom: 2rem;

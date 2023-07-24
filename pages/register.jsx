@@ -77,7 +77,7 @@ const Register = ({ t, initialProviders }) => {
     }
 
     const handleMetamask = async () => {
-        const metamaskAuthModule = await (import('@/libs/metamaskAuth'));
+        const metamaskAuthModule = await (import('@/hooks/metamaskAuth'));
         const metamaskAuth = metamaskAuthModule.default; // Access the default export
         metamaskAuth();
     }

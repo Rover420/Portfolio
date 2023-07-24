@@ -1,14 +1,31 @@
 import styles from '@/styles/navbar.module.css'
 import { useTheme } from 'next-themes';
+import { useState, useEffect } from 'react';
+import AnimatedTabs from './navbar/animatedtabs';
 
 const Navbar = () => {
 
   const { theme, setTheme } = useTheme();
+  const [scroll, setScroll] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setScroll(scrollPosition);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   return (
     <header className={styles.header}>
-      <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} 
-      onKeyDown={(e) => {e.key === 'Enter' ? theme === 'light' ? setTheme('dark') : setTheme('light') : null}}>
+      <div>Logo</div>
+      <AnimatedTabs />
+      <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} >
         Theme
       </button>
     </header>

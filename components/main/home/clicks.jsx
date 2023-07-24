@@ -2,9 +2,9 @@ import styles from '@/styles/Home.module.css';
 import { useState, useEffect } from 'react';
 import { useStore } from '@/store/user';
 
-const Clicks = () => {
+const Clicks = ({ t, prevClicks }) => {
   
-  const [clicks, setClicks] = useState(0);
+  const [clicks, setClicks] = useState(prevClicks ?? 0);
 
   const { socket } = useStore();
 
@@ -21,13 +21,17 @@ const Clicks = () => {
   }, [socket]);
 
   const handleDivClick = () => {
-    socket.emit("click");
+    try {
+      socket.emit("click");
+    } catch (e) {
+      return
+    }
   };
 
 
   return (
     <div onClick={handleDivClick} className={styles.clickswrapper}>
-      <p>Current clicks:</p>
+      <p>{t?.clicks || 'Current clicks:'}</p>
       <span>{clicks}</span>
     </div>
   )

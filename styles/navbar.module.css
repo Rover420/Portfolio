@@ -1,5 +1,60 @@
 .header {
     position: fixed;
-    left: 0;
-    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0px 24px;
+    width: 100vw;
+    z-index: 200;
+    background: hsla(var(--bg-color-alpha), 0);
+    backdrop-filter: blur(0px);
+    justify-content: space-between;
+    transition: background-color .25s ease-out, backdrop-filter .25s ease-out;
+}
+
+.header.scrolled {
+    background: hsla(var(--bg-color-alpha), .6);
+    backdrop-filter: blur(4px);
+}
+
+.tabs {
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    transition: .25s ease-out;
+}
+
+.tabs a {
+    position: relative;
+    border-radius: 9999px;
+    padding: 0.5rem 0.75rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--color);
+    transition: color .25s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs span {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    mix-blend-mode: difference;
+    background-color: white;
+    border-radius: 9999px;
+}
+
+.tabs .hoverTab:hover {
+    color: hsla(var(--color-alpha), .7);
+}
+
+@media screen and (max-width: 550px) {
+    .tabs {
+        display: none;
+    }
 }

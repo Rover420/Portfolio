@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from '@/components/layout/layout';
-import Transition from '@/components/layout/transition';
 
 export default function App({ Component, pageProps }) {
 
@@ -19,9 +18,7 @@ export default function App({ Component, pageProps }) {
         <meta name="description" content="Rover420's personal portfolio" />
       </Head>
       <Layout>
-        <Transition>
-          <Component {...pageProps} />
-        </Transition>
+        <Component {...pageProps} />
       </Layout>
       <ToastContainer
         position="bottom-right"
