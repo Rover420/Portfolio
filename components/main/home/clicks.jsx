@@ -6,6 +6,9 @@ const Clicks = ({ t, prevClicks }) => {
   
   const [clicks, setClicks] = useState(prevClicks ?? 0);
 
+  console.log(clicks)
+  console.log(prevClicks)
+
   const { socket } = useStore();
 
   useEffect(() => {

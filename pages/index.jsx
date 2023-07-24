@@ -4,6 +4,8 @@ import Clicks from '@/components/main/home/clicks';
 
 export default function Home({ t, prevClicks }) {
 
+  console.log(prevClicks)
+
   return (
     <>
       <Head>
@@ -23,11 +25,18 @@ export async function getStaticProps({ locale }) {
   const t = await require(`@/locale/${locale ?? 'en'}`);
 
   const getClicks = async () => {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
-    return data.json();
+    try {
+      const data = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
+      return data.json();
+    } catch (e) {
+      console.log('error')
+      return 0
+    }
   }
 
   const prevClicks = await getClicks();
+
+  console.log(prevClicks)
 
   return {
     props: { t, prevClicks: prevClicks ?? 0 },
