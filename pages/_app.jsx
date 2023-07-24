@@ -12,9 +12,6 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Portfolio</title>
         <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="robots" content="all" />
-        <meta name="theme-color" content="#000000" />
         <meta name="description" content="Rover420's personal portfolio" />
       </Head>
       <Layout>
