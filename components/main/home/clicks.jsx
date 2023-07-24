@@ -2,12 +2,9 @@ import styles from '@/styles/Home.module.css';
 import { useState, useEffect } from 'react';
 import { useStore } from '@/store/user';
 
-const Clicks = ({ t, prevClicks }) => {
+const Clicks = ({ t }) => {
   
-  const [clicks, setClicks] = useState(prevClicks ?? 0);
-
-  console.log(clicks)
-  console.log(prevClicks)
+  const [clicks, setClicks] = useState(0);
 
   const { socket } = useStore();
 

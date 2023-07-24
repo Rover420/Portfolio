@@ -2,9 +2,7 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Clicks from '@/components/main/home/clicks';
 
-export default function Home({ t, prevClicks }) {
-
-  console.log(prevClicks)
+export default function Home({ t }) {
 
   return (
     <>
@@ -15,21 +13,22 @@ export default function Home({ t, prevClicks }) {
         <meta name="robots" content="all" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Clicks prevClicks={prevClicks} />
+      <Clicks />
     </>
   )
 }
 
 export async function getStaticProps({ locale }) {
 
-  const t = await require(`@/locale/${locale ?? 'en'}`);
+  const rawt = await require(`@/locale/${locale ?? 'en'}`);
+
+  const t = rawt.home;
 
   const getClicks = async () => {
     try {
       const data = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
       return data?.json();
     } catch (e) {
-      console.log('error')
       return 0
     }
   }
@@ -39,7 +38,7 @@ export async function getStaticProps({ locale }) {
   console.log(prevClicks)
 
   return {
-    props: { t, prevClicks: prevClicks ?? 0 },
+    props: { t },
     revalidate: 60,
   };
 }
