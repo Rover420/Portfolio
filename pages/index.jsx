@@ -13,9 +13,7 @@ export default function Home({ t }) {
         <meta name="robots" content="all" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ display: 'flex', height: '100svh', justifyContent: 'center', alignItems: 'center' }}>
-        <Clicks />
-      </div>
+      <Clicks />
     </>
   )
 }

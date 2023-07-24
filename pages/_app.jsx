@@ -8,7 +8,7 @@ import Layout from '@/components/layout/layout';
 export default function App({ Component, pageProps }) {
 
   return (
-    <ThemeProvider enableSystem={true}>
+    <ThemeProvider>
       <Head>
         <title>Portfolio</title>
         <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
