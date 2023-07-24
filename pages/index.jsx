@@ -27,7 +27,7 @@ export async function getStaticProps({ locale }) {
   const getClicks = async () => {
     try {
       const data = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
-      return data.json();
+      return data?.json();
     } catch (e) {
       console.log('error')
       return 0
