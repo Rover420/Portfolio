@@ -24,19 +24,6 @@ export async function getStaticProps({ locale }) {
 
   const t = rawt.home;
 
-  const getClicks = async () => {
-    try {
-      const data = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
-      return data?.json();
-    } catch (e) {
-      return 0
-    }
-  }
-
-  const prevClicks = await getClicks();
-
-  console.log(prevClicks)
-
   return {
     props: { t },
     revalidate: 60,
