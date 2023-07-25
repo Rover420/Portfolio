@@ -2,25 +2,11 @@ import styles from '@/styles/Home.module.css';
 import { useState, useEffect } from 'react';
 import { useStore } from '@/store/user';
 
-const Clicks = ({ t }) => {
+const Clicks = ({ t, prevClicks }) => {
   
-  const [clicks, setClicks] = useState(0);
+  const [clicks, setClicks] = useState(prevClicks ?? 0);
 
   const { socket } = useStore();
-
-  useEffect(() => {
-    const getClicks = async () => {
-      try {
-        const raw = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
-        const data = await raw.json();
-        console.log(data)
-        return data
-      } catch (e) {
-        console.log('Error: ', e)
-      }
-    }
-    getClicks();
-  }, [])
 
   useEffect(() => {
     const handleValue = (value) => {
