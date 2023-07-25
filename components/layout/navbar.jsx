@@ -2,6 +2,7 @@ import styles from '@/styles/navbar.module.css'
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 import AnimatedTabs from './navbar/animatedtabs';
+import Logo from './navbar/logo';
 
 const Navbar = () => {
 
@@ -23,7 +24,7 @@ const Navbar = () => {
   
   return (
     <header className={styles.header}>
-      <div>Logo</div>
+      <Logo className={styles.logo} />
       <AnimatedTabs />
       <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} >
         Theme

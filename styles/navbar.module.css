@@ -17,13 +17,20 @@
     backdrop-filter: blur(4px);
 }
 
+.header .logo {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 999px;
+}
+
 .tabs {
     padding: 0 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--bg-color);
-    transition: .25s ease-out;
+    transition: background-color .25s ease-out;
 }
 
 .tabs a {

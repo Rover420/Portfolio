@@ -9,6 +9,20 @@ const Clicks = ({ t }) => {
   const { socket } = useStore();
 
   useEffect(() => {
+    const getClicks = async () => {
+      try {
+        const raw = await fetch(`${process.env.NEXT_PUBLIC_NODE_URL}/clicks`);
+        const data = await raw.json();
+        console.log(data)
+        return data
+      } catch (e) {
+        console.log('Error: ', e)
+      }
+    }
+    getClicks();
+  }, [])
+
+  useEffect(() => {
     const handleValue = (value) => {
       setClicks(value);
     };
