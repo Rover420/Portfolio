@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { getProviders } from "next-auth/react";
 
 const SignInPage = dynamic(() => import("@/components/main/signinpage"));
 
