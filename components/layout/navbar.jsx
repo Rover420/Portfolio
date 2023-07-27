@@ -27,10 +27,10 @@ const Navbar = () => {
     <header className={`${styles.header} ${scroll > 10 ? styles.scrolled : ''}`}>
       <Logo className={styles.logo} />
       <ul style={{ display: 'flex', gap: '16px' }}>
-        <Link href='/'>Homepage</Link>
-        <Link href='/register'>Register</Link>
-        <Link href='/signin'>Sign In</Link>
-        <Link href='/profile'>Profile</Link>
+        <li><Link href='/'>Homepage</Link></li>
+        <li><Link href='/register'>Register</Link></li>
+        <li><Link href='/signin'>Sign In</Link></li>
+        <li><Link href='/profile'>Profile</Link></li>
       </ul>
       <div className='flex'>
         <Settingsbtn />

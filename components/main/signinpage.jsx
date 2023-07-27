@@ -2,14 +2,14 @@ import styles from '@/styles/login.module.css'
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { signIn } from "next-auth/react";
+import { getProviders, signIn } from "next-auth/react";
 
 import Button from '@/components/external/button';
 import axios from '@/hooks/axios';
 
 
 
-const SignInPage = ({ t, initialProviders, providersErr }) => {
+const SignInPage = ({ t, initialProviders }) => {
 
     const [providers, setProviders] = useState(initialProviders);
 
@@ -26,21 +26,13 @@ const SignInPage = ({ t, initialProviders, providersErr }) => {
     }
 
     useEffect(() => {
-        if(providersErr) {
-            console.log('1')
-            const loadProviders = async () => {
-                console.log('2')
-                const { getProviders } = await import('next-auth/react');
-                const res = await getProviders();
-                const providersList = Object.keys(res).map((k) => res[k]);
-                console.log(providersList)
-                setProviders(providersList);
-            };
-            loadProviders();
-        }
+        const loadProviders = async () => {
+            const res = await getProviders();
+            const providersList = Object.keys(res).map((k) => res[k]);
+            setProviders(providersList);
+        };
+        loadProviders();
     }, []);
-    
-    console.log(providersErr)
 
   return (
     <section className={styles.wrapper}>
