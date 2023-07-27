@@ -127,4 +127,7 @@
     .settings {
         width: 100vw;
     }
+    .header ul {
+        display: none;
+    }
 }

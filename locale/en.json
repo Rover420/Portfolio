@@ -2,7 +2,7 @@
   "home": {
     "clicks": "Current clicks:"
   },
-  "login": {
+  "signin": {
     "title": "Sign in",
     "username": "Username",
     "pass": "Password",
