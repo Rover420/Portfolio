@@ -87,7 +87,7 @@
     gap: 16px;
 }
 
-.settings .wrapper div {
+.settings .wrapper > div {
     display: flex;
     gap: 20px;
 }
@@ -117,9 +117,63 @@
     text-transform: uppercase;
     margin: 0;
     font-size: 12px;
+    user-select: none;
     letter-spacing: 1px;
     color: hsla(var(--color-alpha), .7);
     transition: color .25s ease-out;
+}
+
+.settings .localewrapper {
+    position: relative;
+    height: 40px;
+    width: 140px;
+    border-radius: 12px;
+}
+
+.settings .localewrapper .localelist {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 140px;
+    background: var(--container);
+    border-radius: 12px;
+    box-shadow: 0 5px 12px hsla(0, 0%, 0%, .1);
+    top: 0;
+    overflow: hidden;
+    transition: background-color .25s ease-out;
+}
+
+.settings .localewrapper .listwrapper {
+    width: 100%;
+}
+
+.settings .localewrapper button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    height: 32px;
+    width: 100%;
+    padding: 0px 12px;
+    transition: background-color .25s ease-out;
+}
+
+.settings .localewrapper button > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings .localewrapper button svg {
+    padding-top: 1px;
+}
+
+.settings .localewrapper button:hover, .settings .localewrapper button:focus-visible {
+    background: var(--light-hover);
+    outline: none;
 }
 
 

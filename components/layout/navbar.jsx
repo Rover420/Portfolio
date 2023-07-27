@@ -5,7 +5,7 @@ import Logo from './navbar/logo';
 import Settingsbtn from './navbar/settingsbtn';
 import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar = ({ t }) => {
 
   const { theme, setTheme } = useTheme();
   const [scroll, setScroll] = useState(0);
@@ -33,7 +33,7 @@ const Navbar = () => {
         <li><Link href='/profile'>Profile</Link></li>
       </ul>
       <div className='flex'>
-        <Settingsbtn />
+        <Settingsbtn t={t?.settings} />
         <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} >
           Theme
         </button>

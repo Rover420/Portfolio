@@ -1,16 +1,13 @@
 {
-    "navbar": {
-      "clicks": "Aktualne kliknięcia: "
-    },
-    "settings": {
-      "title": "Logowanie",
-      "username": "Nazwa użytkownika",
-      "pass": "Hasło",
-      "email": "Adres E-Mail",
-      "remember": "Nie wylogowuj mnie",
-      "forgot": "Nie pamiętasz hasła?",
-      "submit": "Zaloguj się",
-      "noacc": "Nie posiadasz konta?",
-      "register": "Utwórz konto"
-    }
+  "navbar": {
+    "clicks": "Aktualne kliknięcia: "
+  },
+  "settings": {
+    "title": "Settings",
+    "heading": "App Settings",
+    "theme": "Color Scheme",
+    "light": "Light",
+    "dark": "Dark",
+    "lang": "Language"
+  }
 }

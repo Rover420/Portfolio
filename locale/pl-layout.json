@@ -3,14 +3,11 @@
       "clicks": "Aktualne kliknięcia: "
     },
     "settings": {
-      "title": "Logowanie",
-      "username": "Nazwa użytkownika",
-      "pass": "Hasło",
-      "email": "Adres E-Mail",
-      "remember": "Nie wylogowuj mnie",
-      "forgot": "Nie pamiętasz hasła?",
-      "submit": "Zaloguj się",
-      "noacc": "Nie posiadasz konta?",
-      "register": "Utwórz konto"
+      "title": "Ustawienia",
+      "heading": "Ustawienia aplikacji",
+      "theme": "Motyw",
+      "light": "Jasny",
+      "dark": "Ciemny",
+      "lang": "Język"
     }
 }

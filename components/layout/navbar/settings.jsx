@@ -4,7 +4,7 @@ import Close from '@/components/external/close';
 import ThemeWrapper from './settings/themewrapper';
 import Language from './settings/language';
 
-const Settings = ({ setIsOpen }) => {
+const Settings = ({ setIsOpen, t }) => {
 
     const handleClick = (e) => {
         e.stopPropagation();
@@ -17,13 +17,13 @@ const Settings = ({ setIsOpen }) => {
             animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ duration: .2, ease: 'easeOut' }}>
             
             <div className={styles.heading}>
-                <h3>App Settings</h3>
+                <h3>{t?.heading ?? 'App Settings'}</h3>
                 <Close setIsOpen={setIsOpen} />
             </div>
 
-            <ThemeWrapper />
+            <ThemeWrapper t={t} />
 
-            <Language />
+            <Language t={t} />
 
         </motion.div>
     </motion.div>

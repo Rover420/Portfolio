@@ -6,7 +6,7 @@ import dynamic from "next/dynamic"
 
 const DynamicSettings = dynamic(() => import("./settings"));
 
-const Settingsbtn = () => {
+const Settingsbtn = ({ t }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -21,7 +21,7 @@ const Settingsbtn = () => {
             </button>
         </Button>
         <AnimatePresence>
-            {isOpen && <DynamicSettings setIsOpen={setIsOpen} />}
+            {isOpen && <DynamicSettings setIsOpen={setIsOpen} t={t} />}
         </AnimatePresence>
     </div>
   )
