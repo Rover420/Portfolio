@@ -26,7 +26,7 @@ const Navbar = ({ t }) => {
   return (
     <header className={`${styles.header} ${scroll > 10 ? styles.scrolled : ''}`}>
       <Logo className={styles.logo} />
-      <ul style={{ display: 'flex', gap: '16px' }}>
+      <ul>
         <li><Link href='/'>Homepage</Link></li>
         <li><Link href='/register'>Register</Link></li>
         <li><Link href='/signin'>Sign In</Link></li>
