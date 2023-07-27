@@ -50,6 +50,10 @@ a {
   scroll-behavior: smooth;
 }
 
+li {
+  list-style: none;
+}
+
 img {
   user-select: none;
 }
