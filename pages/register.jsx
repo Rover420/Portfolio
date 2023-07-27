@@ -3,9 +3,9 @@ import { getProviders } from "next-auth/react";
 
 const RegisterPage = dynamic(() => import("@/components/main/registerpage"));
 
-const Register = ({ t, initialProviders }) => {
+const Register = ({ t, initialProviders, providersErr }) => {
 
-  return <RegisterPage t={t} initialProviders={initialProviders} />
+  return <RegisterPage t={t} initialProviders={initialProviders} providersErr={providersErr} />
 }
 
 export default Register
@@ -35,7 +35,7 @@ export async function getStaticProps({ locale }) {
       ]
   
       return {
-        props: { t, initialProviders },
+        props: { t, initialProviders, providersErr: true },
         revalidate: 60,
       };
     }

@@ -1,6 +1,6 @@
 import styles from '@/styles/login.module.css'
 import { useState, useEffect, useRef } from 'react'
-import { getProviders, signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import axios from '@/hooks/axios';
 import Image from 'next/image';
@@ -12,7 +12,7 @@ import Button from '@/components/external/button';
 const USER_REGEX = /^.{4,50}$/;
 const PWD_REGEX = /^.{8,50}$/;
 
-const RegisterPage = ({ t, initialProviders }) => {
+const RegisterPage = ({ t, initialProviders, providersErr }) => {
 
     const [providers, setProviders] = useState(initialProviders);
 
@@ -103,13 +103,21 @@ const RegisterPage = ({ t, initialProviders }) => {
 
 
     useEffect(() => {
-        const loadProviders = async () => {
-            const res = await getProviders();
-            const providersList = Object.keys(res).map((k) => res[k]);
-            setProviders(providersList);
-        };
-        loadProviders();
+        if(providersErr) {
+            console.log('1')
+            const loadProviders = async () => {
+                console.log('2')
+                const { getProviders } = await import('next-auth/react');
+                const res = await getProviders();
+                const providersList = Object.keys(res).map((k) => res[k]);
+                console.log(providersList)
+                setProviders(providersList);
+            };
+            loadProviders();
+        }
     }, []);
+    
+    console.log(providersErr)
 
   return (
     <section className={styles.wrapper}>
@@ -220,11 +228,11 @@ const RegisterPage = ({ t, initialProviders }) => {
 
             <div className={styles.providers}>
                 <button type='button' onClick={handleMetamask} className={`${styles.provider} ${styles.metamask}`}>
-                    <Image src={`/metamask.svg`} height={28} width={28} alt='MetaMask' />
+                    <Image src={`/metamask.svg`} height={28} width={28} alt='MetaMask' priority />
                 </button>
                 {Object.values(providers).map((provider) => (
                     <button key={provider.name} className={`${styles.provider} ${styles[provider.id]}`} onClick={() => signIn(provider.id)}>
-                        <Image src={`/${provider.id}.png`} height={28} width={28} alt={provider.name} />
+                        <Image src={`/${provider.id}.png`} height={28} width={28} alt={provider.name} priority />
                     </button>
                 ))}
             </div>

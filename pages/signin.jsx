@@ -3,9 +3,9 @@ import { getProviders } from "next-auth/react";
 
 const SignInPage = dynamic(() => import("@/components/main/signinpage"));
 
-const SignIn = ({ t, initialProviders }) => {
+const SignIn = ({ t, initialProviders, providersErr }) => {
 
-  return <SignInPage t={t} initialProviders={initialProviders} />
+  return <SignInPage t={t} initialProviders={initialProviders} providersErr={providersErr} />
 }
 
 export default SignIn
@@ -35,7 +35,7 @@ export async function getStaticProps({ locale }) {
       ]
   
       return {
-        props: { t, initialProviders },
+        props: { t, initialProviders, providersErr: true },
         revalidate: 60,
       };
     }
