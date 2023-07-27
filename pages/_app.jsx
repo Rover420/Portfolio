@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider>
       <Head>
         <title>Portfolio</title>
-        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
         <meta name="description" content="Rover420's personal portfolio" />
       </Head>
       <Layout>

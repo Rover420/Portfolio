@@ -1,8 +1,9 @@
 import styles from '@/styles/navbar.module.css'
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
-import AnimatedTabs from './navbar/animatedtabs';
 import Logo from './navbar/logo';
+import Settingsbtn from './navbar/settingsbtn';
+import Link from 'next/link';
 
 const Navbar = () => {
 
@@ -23,12 +24,20 @@ const Navbar = () => {
   }, []);
   
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scroll > 10 ? styles.scrolled : ''}`}>
       <Logo className={styles.logo} />
-      <AnimatedTabs />
-      <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} >
-        Theme
-      </button>
+      <ul style={{ display: 'flex', gap: '16px' }}>
+        <Link href='/'>Homepage</Link>
+        <Link href='/register'>Register</Link>
+        <Link href='/signin'>Sign In</Link>
+        <Link href='/profile'>Profile</Link>
+      </ul>
+      <div className='flex'>
+        <Settingsbtn />
+        <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} >
+          Theme
+        </button>
+      </div>
     </header>
   )
 }

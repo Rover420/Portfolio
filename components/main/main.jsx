@@ -12,7 +12,10 @@ export default function Main({ t, prevClicks }) {
           <meta name="robots" content="all" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Clicks t={t} prevClicks={prevClicks} />
+        <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Clicks t={t} prevClicks={prevClicks} />
+        </div>
+        <div style={{ height: '300vh' }} />
       </>
     )
 }

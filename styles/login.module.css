@@ -15,7 +15,6 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 35px;
     width: 420px;
     min-width: 0px;
-    margin-top: -10vh;
 }
 
 .container h2 {
@@ -240,7 +239,7 @@
     height: 1rem;
     width: 1rem;
     margin: 0 .5rem 0 0;
-    padding: 0;
+    padding-left: 1px;
     cursor: pointer;
     transition: background-color .1s ease-out;
 }

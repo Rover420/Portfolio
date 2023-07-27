@@ -2,6 +2,7 @@ import Navbar from './navbar'
 import PingComponent from './ping'
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
+import { useEffect } from 'react';
 
 
 const variants = {
@@ -22,7 +23,16 @@ const variants = {
 
 const Layout = ({ children }) => {
 
-  const { pathname } = useRouter();
+  const { pathname, locale } = useRouter();
+
+  useEffect(() => {
+    const getLocale = async () => {
+      const translation = await require(`@/locale/${locale ?? 'en'}-layout`);
+
+      console.log(translation)
+    }
+    getLocale();
+  }, [locale])
 
   return (
     <>
