@@ -145,6 +145,46 @@ button:focus-visible, a:focus-visible {
   background: var(--light-hover);
 }
 
+.modalwrapper {
+  position: fixed;
+  z-index: 800;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.modal {
+    background-color: var(--bg-color);
+    color: var(--color);
+    border-radius: 8px;
+    margin: 32px;
+    position: relative;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    transform-origin: top center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.modal > button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px;
+  font-size: 1.25rem;
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
+}
+
 .ripplebtn {
   position: relative;
   overflow: hidden;

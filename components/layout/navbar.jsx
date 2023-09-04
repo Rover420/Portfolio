@@ -1,13 +1,12 @@
 import styles from '@/styles/navbar.module.css'
-import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 import Logo from './navbar/logo';
 import Settingsbtn from './navbar/settingsbtn';
 import Link from 'next/link';
+import ProfileMenu from './navbar/profilemenu';
 
 const Navbar = ({ t }) => {
 
-  const { theme, setTheme } = useTheme();
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
@@ -27,16 +26,14 @@ const Navbar = ({ t }) => {
     <header className={`${styles.header} ${scroll > 10 ? styles.scrolled : ''}`}>
       <Logo className={styles.logo} />
       <ul>
-        <li><Link href='/'>Homepage</Link></li>
-        <li><Link href='/register'>Register</Link></li>
-        <li><Link href='/signin'>Sign In</Link></li>
-        <li><Link href='/profile'>Profile</Link></li>
+        <li><Link href='/'>{t?.navbar?.home ?? 'Homepage'}</Link></li>
+        <li><Link href='/register'>{t?.navbar?.register ?? 'Register'}</Link></li>
+        <li><Link href='/signin'>{t?.navbar?.signin ?? 'Sign In'}</Link></li>
+        <li><Link href='/profile'>{t?.navbar?.profile ?? 'Profile'}</Link></li>
       </ul>
       <div className='flex'>
         <Settingsbtn t={t?.settings} />
-        <button onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}} >
-          Theme
-        </button>
+        <ProfileMenu t={t?.profilemenu} />
       </div>
     </header>
   )

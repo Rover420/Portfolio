@@ -25,6 +25,8 @@
     font-weight: 500;
     padding: 8px 10px;
     border-radius: 999px;
+    color: var(--color);
+    transition: color .25s ease-out;
 }
 
 .header ul {
@@ -109,7 +111,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-size: 13px;
     padding: 6px 10px;
     font-weight: 500;
@@ -131,7 +133,7 @@
 .settings .localewrapper {
     position: relative;
     height: 40px;
-    width: 140px;
+    min-width: 140px;
     border-radius: 12px;
 }
 
@@ -162,6 +164,8 @@
     height: 32px;
     width: 100%;
     padding: 0px 12px;
+    font-size: 13px;
+    font-weight: 500;
     transition: background-color .25s ease-out;
 }
 
@@ -176,7 +180,37 @@
     padding-top: 1px;
 }
 
-.settings .localewrapper button:hover, .settings .localewrapper button:focus-visible {
+.settings .selectedcurrency {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.settings .selectedcurrency > button {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 12px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 12px;
+    background: var(--container);
+    box-shadow: 0 5px 12px hsla(0, 0%, 0%, .1);
+    transition: background-color .25s ease-out;
+}
+
+.settings .selectedcurrency > button > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings p {
+    margin: 0;
+}
+
+.settings .localewrapper button:hover, .settings .localewrapper button:focus-visible, .settings .selectedcurrency > button:hover, .settings .selectedcurrency > button:focus-visible {
     background: var(--light-hover);
     outline: none;
 }

@@ -27,12 +27,14 @@ const Language = ({ t }) => {
           <div className={`${styles.localelist} ${isOpen ? styles.open : ''}`} onClick={() => {setIsOpen(prev => !prev)}}>
             <button>
               <div>
-                <Image src={selectedLocale && selectedLocale.source} height={16} width={16} alt='Selected language' />
+                <Image src={selectedLocale && selectedLocale.source} height={20} width={20} alt='Selected language' />
                 <p>{selectedLocale && selectedLocale.lang}</p>
               </div>
-              <svg fill="none" width={20} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <motion.div animate={isOpen ? { rotate: 180 } : { rotate: 0 }}>
+                <svg fill="none" width={20} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </motion.div>
             </button>
               <AnimatePresence>
                 {isOpen && 
@@ -42,7 +44,7 @@ const Language = ({ t }) => {
                         return (
                           <button key={item.id} onClick={() => switchLocale(item.id)}>
                             <div>
-                              <Image src={item.source} height={16} width={16} alt={`${item.lang} language`} />
+                              <Image src={item.source} height={20} width={20} alt={`${item.lang} language`} />
                               <p>{item.lang}</p>
                             </div>
                           </button>

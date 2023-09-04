@@ -68,11 +68,11 @@ const SignInPage = ({ t, initialProviders }) => {
 
                 <div className={styles.providers}>
                     <button className={`${styles.provider} ${styles.metamask}`}>
-                        <Image src={`/metamask.svg`} height={28} width={28} alt='MetaMask' layout />
+                        <Image src={`/metamask.svg`} height={28} width={28} alt='MetaMask' priority />
                     </button>
                     {Object.values(providers).map((provider) => (
                         <button key={provider.name} className={`${styles.provider} ${styles[provider.id]}`} onClick={() => signIn(provider.id)}>
-                            <Image src={`/${provider.id}.png`} height={28} width={28} alt={provider.name} layout />
+                            <Image src={`/${provider.id}.png`} height={28} width={28} alt={provider.name} priority />
                         </button>
                     ))}
                 </div>

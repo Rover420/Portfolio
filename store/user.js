@@ -10,6 +10,9 @@ export const useStore = create((set, get) => ({
     setUser: (state) => set((prev) => ({ user: { ...prev.user, ...state } })),
     resetUser: () => set({ user: initialUser }),
 
+    currency: {'name': 'USD', 'rate': 1, 'symbol': '$', 'float': 2, 'url': '/USDIcon.svg'},
+    setCurrency: (state) => set((prev) => ({ currency: { ...prev.currency, ...state } })),
+
     publicKey: '',
     setPublicKey: (state) => set(() => ({ publicKey: state })),
 

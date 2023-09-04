@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Close from '@/components/external/close';
 import ThemeWrapper from './settings/themewrapper';
 import Language from './settings/language';
+import Currency from './settings/currency';
 
 const Settings = ({ setIsOpen, t }) => {
 
@@ -24,6 +25,8 @@ const Settings = ({ setIsOpen, t }) => {
             <ThemeWrapper t={t} />
 
             <Language t={t} />
+
+            <Currency t={t} />
 
         </motion.div>
     </motion.div>

@@ -1,6 +1,9 @@
 {
     "navbar": {
-      "clicks": "Aktualne kliknięcia: "
+      "home": "Strona główna",
+      "register": "Rejestracja",
+      "signin": "Logowanie",
+      "profile": "Profil"
     },
     "settings": {
       "title": "Ustawienia",
@@ -8,6 +11,7 @@
       "theme": "Motyw",
       "light": "Jasny",
       "dark": "Ciemny",
-      "lang": "Język"
+      "lang": "Język",
+      "currency": "Waluta"
     }
 }

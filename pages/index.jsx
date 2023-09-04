@@ -25,7 +25,7 @@ export async function getStaticProps({ locale }) {
     };
   } catch (e) {
 
-    console.error('Error fetching clicks data: ', error.message);
+    console.error('Error fetching clicks data: ', e.message);
 
     return {
       props: { t, prevClicks: 0 },
