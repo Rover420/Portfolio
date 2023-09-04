@@ -14,7 +14,6 @@
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 35px;
     width: 420px;
-    min-width: 0px;
 }
 
 .container h2 {
@@ -317,6 +316,7 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    flex-wrap: wrap;
 }
 
 .providers .provider img {
@@ -373,7 +373,8 @@
 @media screen and (max-width: 600px), (max-height: 600px) {
     .container {
         box-shadow: none;
-        padding: 0 2rem;
+        padding: 0 1rem;
+        width: 100%;
     }
     .container h2 {
         margin-top: 0;

@@ -85,7 +85,7 @@ const RegisterPage = ({ t, initialProviders }) => {
 
 
     useEffect(() => {
-        userRef.current.focus();
+        userRef?.current?.focus();
     }, [])
 
     useEffect(() => {
